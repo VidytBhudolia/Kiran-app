@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ActivityIndicator, Dimensions, ScrollView } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import Card from "../components/Card";
+import { API_URL } from "@env";
 
-// Fetch data from local API
+// Fetch data from API
 const fetchDataFromAPI = async (setFeeds, setIsLoading) => {
-  const url = "https://kiran-application.onrender.com/api/data";
+  const url = (API_URL && API_URL.length > 0 ? API_URL : "http://localhost:3000/api/data").trim();
 
   try {
     const response = await fetch(url);
